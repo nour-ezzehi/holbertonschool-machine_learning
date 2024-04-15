@@ -6,4 +6,4 @@
 
 # Projects inside this repo :bike:
 
-[math/linear_algebra](https://github.com/nour-ezzehi/holbertonschool-machine_learning/tree/main/math/linear_algebra)| Linear Algebra scripts in python
+[math/linear_algebra](https://github.com/nour-ezzehi/holbertonschool-machine_learning/tree/main/math/linear_algebra): Linear Algebra scripts in python
