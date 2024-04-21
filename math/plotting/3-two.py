@@ -8,7 +8,7 @@ def two():
     """
     plot x ↦ y1 and x ↦ y2 as line graphs
     """
-    
+
     x = np.arange(0, 21000, 1000)
     r = np.log(0.5)
     t1 = 5730
