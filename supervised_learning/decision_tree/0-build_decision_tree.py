@@ -7,6 +7,7 @@ import numpy as np
 
 class Node:
     """Node class"""
+
     def __init__(
             self,
             feature=None,
@@ -36,9 +37,9 @@ class Node:
         return max(left_depth, right_depth)
 
 
-
 class Leaf(Node):
     """Leaf class"""
+
     def __init__(self, value, depth=None):
         super().__init__()
         self.value = value
@@ -52,6 +53,7 @@ class Leaf(Node):
 
 class Decision_Tree():
     """Decision tree class"""
+
     def __init__(
             self,
             max_depth=10,
