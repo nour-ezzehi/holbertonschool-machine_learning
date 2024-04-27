@@ -12,6 +12,7 @@ def change_scale():
     r = np.log(0.5)
     t = 5730
     y = np.exp((r / t) * x)
+    print(y)
     plt.figure(figsize=(6.4, 4.8))
     plt.plot(x, y, '-')
     plt.title('Exponential Decay of C-14')
