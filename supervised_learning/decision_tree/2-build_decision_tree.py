@@ -70,9 +70,8 @@ class Node:
             "    +--"
             + lines[0]
             + "\n"
-            + "\n".join("    " + " " * 3 + line for line in lines[1:])  # Adjusted indentation
+            + "\n".join("    " + " " * 3 + line for line in lines[1:])[:-1]  # Remove the last newline character
         )
-
 
     def __str__(self):
         """Return the Node and its children"""
