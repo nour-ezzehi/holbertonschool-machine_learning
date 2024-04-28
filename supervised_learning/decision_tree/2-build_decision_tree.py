@@ -66,12 +66,12 @@ class Node:
     def right_child_add_prefix(self, text):
         """right child string"""
         lines = text.split("\n")
-        return (
-            "    +--"
-            + lines[0]
-            + "\n"
-            + "\n".join("    " + " " * 3 + line for line in lines[1:])[:-1]  # Remove the last newline character
-        )
+        new_text = "    +--" + lines[0] + "\n"
+        for x in lines[1:]:
+            if x:
+                new_text += ("       " + x) + "\n"
+        return new_text
+
     
   
     def __str__(self):
