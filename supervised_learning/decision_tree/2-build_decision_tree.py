@@ -72,8 +72,6 @@ class Node:
                 new_text += ("       " + x) + "\n"
         return new_text
 
-    
-  
     def __str__(self):
         """Return the Node and its children"""
         result = (
