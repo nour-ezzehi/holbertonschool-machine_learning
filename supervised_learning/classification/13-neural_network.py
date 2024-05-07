@@ -78,19 +78,19 @@ class NeuralNetwork:
         return prediction, cost
 
 
-def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
-    """Calculates one pass of gradient descent on the neuron"""
-    m = Y.shape[1]
+    def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
+        """Calculates one pass of gradient descent on the neuron"""
+        m = Y.shape[1]
 
-    dz2 = A2 - Y
-    dw2 = np.matmul(A1, dz2.T) / m
-    db2 = np.sum(dz2, axis=1, keepdims=True) / m
+        dz2 = A2 - Y
+        dw2 = np.matmul(A1, dz2.T) / m
+        db2 = np.sum(dz2, axis=1, keepdims=True) / m
 
-    dz1 = np.matmul(self.__W2.T, dz2) * A1 * (1 - A1)
-    dw1 = np.matmul(X, dz1.T) / m
-    db1 = np.sum(dz1, axis=1, keepdims=True) / m
+        dz1 = np.matmul(self.__W2.T, dz2) * A1 * (1 - A1)
+        dw1 = np.matmul(X, dz1.T) / m
+        db1 = np.sum(dz1, axis=1, keepdims=True) / m
 
-    self.__W2 -= alpha * dw2.T
-    self.__b2 -= alpha * db2
-    self.__W1 -= alpha * dw1.T
-    self.__b1 -= alpha * db1
+        self.__W2 -= alpha * dw2.T
+        self.__b2 -= alpha * db2
+        self.__W1 -= alpha * dw1.T
+        self.__b1 -= alpha * db1
