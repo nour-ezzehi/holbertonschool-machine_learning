@@ -77,7 +77,6 @@ class NeuralNetwork:
 
         return prediction, cost
 
-
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         """Calculates one pass of gradient descent on the neuron"""
         m = Y.shape[1]
