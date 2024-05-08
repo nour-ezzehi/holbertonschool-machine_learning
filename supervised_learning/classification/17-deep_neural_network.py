@@ -17,30 +17,29 @@ class DeepNeuralNetwork:
         self.__L = len(layers)
         self.__cache = {}
         self.__weights = {}
-
-        @property
-        def L(self):
-            """getter for L"""
-            return self.__L
-
-        @property
-        def cache(self):
-            """getter for cache"""
-            return self.__cache
-
-        @property
-        def weights(self):
-            """getter for weights"""
-            return self.__weights
-
         for i in range(self.L):
-            if not isinstance(layers[i], int) or layers[i] < 1:
-                raise TypeError("layers must be a list of positive integers")
-            if i == 0:
-                he_initialized_weights = np.random.randn(
-                    layers[i], nx) * np.sqrt(2 / nx)
-            else:
-                he_initialized_weights = np.random.randn(
-                    layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
-            self.weights['W' + str(i + 1)] = he_initialized_weights
-            self.weights['b' + str(i + 1)] = np.zeros((layers[i], 1))
+          if not isinstance(layers[i], int) or layers[i] < 1:
+              raise TypeError("layers must be a list of positive integers")
+          if i == 0:
+              he_initialized_weights = np.random.randn(
+                  layers[i], nx) * np.sqrt(2 / nx)
+          else:
+              he_initialized_weights = np.random.randn(
+                  layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
+          self.weights['W' + str(i + 1)] = he_initialized_weights
+          self.weights['b' + str(i + 1)] = np.zeros((layers[i], 1))
+
+    @property
+    def L(self):
+        """getter for L"""
+        return self.__L
+
+    @property
+    def cache(self):
+        """getter for cache"""
+        return self.__cache
+
+    @property
+    def weights(self):
+        """getter for weights"""
+        return self.__weights
