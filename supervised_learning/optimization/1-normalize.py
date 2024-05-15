@@ -5,6 +5,5 @@
 def normalize(X, m, s):
     """ normalizes (standardizes) a matrix
     """
-  
-    return (X - m) / s
 
+    return (X - m) / s
