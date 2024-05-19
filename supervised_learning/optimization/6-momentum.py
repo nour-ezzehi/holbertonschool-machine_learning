@@ -5,11 +5,11 @@
 import tensorflow as tf
 
 
-def create_momentum_op(loss, alpha, beta1):
-    """sets up the gradient descent with momentum
-    optimization algorithm in TensorFlow
+def create_momentum_op(alpha, beta1):
     """
-
-    optimizer = tf.train.MomentumOptimizer(alpha, beta1).minimize(loss)
+    creating the whole
+    momentum optimization process
+    """
+    optimizer = tf.keras.optimizers.SGD(learning_rate=alpha, momentum=beta1)
 
     return optimizer
