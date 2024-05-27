@@ -81,10 +81,10 @@ class Node:
     def __str__(self):
         """Return the Node and its children"""
         result = (
-            f"root [feature={self.feature}, threshold={self.threshold}]"
+            f"root [feature={self.feature}, threshold={self.threshold}] "
             if self.is_root
             else
-            f"-> node [feature={self.feature}, threshold={self.threshold}]"
+            f"-> node [feature={self.feature}, threshold={self.threshold}] "
         )
         if self.left_child:
             result += "\n" + self.left_child_add_prefix(str(self.left_child))
