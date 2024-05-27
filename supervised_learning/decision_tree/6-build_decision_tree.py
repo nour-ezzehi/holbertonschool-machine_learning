@@ -129,6 +129,7 @@ class Node:
             np.array([is_large_enough(x), is_small_enough(x)]), axis=0)
 
     def pred(self, x):
+        """pred"""
         if x[self.feature] > self.threshold:
             return self.left_child.pred(x)
         else:
@@ -179,6 +180,7 @@ class Leaf(Node):
         pass
 
     def pred(self, x):
+        """pred"""
         return self.value
 
 
@@ -225,6 +227,7 @@ class Decision_Tree():
         self.root.update_bounds_below()
 
     def pred(self, x):
+        """pred"""
         return self.root.pred(x)
 
     def update_predict(self):
