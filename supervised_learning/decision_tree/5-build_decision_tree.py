@@ -165,6 +165,7 @@ class Leaf(Node):
         return (f"-> leaf [value={self.value}]")
 
     def get_leaves_below(self):
+        """get leaves"""
         return [self]
 
     def update_bounds_below(self):
