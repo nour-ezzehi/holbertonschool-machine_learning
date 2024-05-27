@@ -208,7 +208,9 @@ class Decision_Tree():
         return self.root.__str__()
 
     def get_leaves(self):
+        """get leaves"""
         return self.root.get_leaves_below()
 
     def update_bounds(self):
+        """update bounds"""
         self.root.update_bounds_below()
