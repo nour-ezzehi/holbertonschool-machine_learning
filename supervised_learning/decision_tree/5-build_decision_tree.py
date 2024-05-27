@@ -110,11 +110,17 @@ class Node:
         dictionaries and stores it in an attribute Node.indicator
         """
         def is_large_enough(A):
+            """<- fill the gap : this function returns a 1D numpy array of size
+            #n_individuals` so that the `i`-th element of the later is `True`
+            #if the i-th individual has all its features <= the lower bounds"""
             return np.all(
                 np.array([np.greater(A[:, feature], self.lower[feature])
                           for feature in self.lower]), axis=0)
 
         def is_small_enough(A):
+            """<- fill the gap : this function returns a 1D numpy array of size
+            #n_individuals` so that the `i`-th element of the later is `True`
+            #if the i-th individual has all its features > the lower bounds"""
             return np.all(
                 np.array([np.less_equal(A[:, feature], self.upper[feature])
                           for feature in self.upper]), axis=0)
