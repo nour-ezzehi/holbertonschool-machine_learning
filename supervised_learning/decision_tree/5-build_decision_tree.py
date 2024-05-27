@@ -113,6 +113,7 @@ class Node:
             return np.all(
                 np.array([np.greater(A[:, feature], self.lower[feature])
                           for feature in self.lower]), axis=0)
+
         def is_small_enough(A):
             return np.all(
                 np.array([np.less_equal(A[:, feature], self.upper[feature])
