@@ -129,7 +129,7 @@ class Node:
             np.array([is_large_enough(x), is_small_enough(x)]), axis=0)
 
     def pred(self, x):
-        """pred"""
+        """pred fucntion"""
         if x[self.feature] > self.threshold:
             return self.left_child.pred(x)
         else:
