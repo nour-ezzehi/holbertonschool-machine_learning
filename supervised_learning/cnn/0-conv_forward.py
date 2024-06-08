@@ -22,7 +22,7 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         raise ValueError("padding must be 'same' or 'valid'")
 
     h_new = ((h_prev - kh + 2 * pad_h) // sh) + 1
-    w_new = ((w_prev - kw + 2 * pad_h) // sw) + 1
+    w_new = ((w_prev - kw + 2 * pad_w) // sw) + 1
 
     A_prev_pad = np.pad(A_prev, ((0, 0), (pad_h, pad_h),
                                  (pad_w, pad_w), (0, 0)), mode='constant')
