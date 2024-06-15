@@ -2,14 +2,14 @@
 """ 0. Inception Block """
 
 
-import tensorflow.keras as K
+from tensorflow import keras as K
 
 
 def inception_block(A_prev, filters):
     """ builds an inception block """
 
     init = K.initializers.he_normal()
-    
+
     F1, F3R, F3, F5R, F5, FPP = filters
     c_F1 = K.layers.Conv2D(F1, kernel_size=1, padding="same",
                            activation="relu", kernel_initializer=init)(A_prev)
