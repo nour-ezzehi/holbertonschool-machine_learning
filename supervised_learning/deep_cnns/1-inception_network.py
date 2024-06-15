@@ -18,7 +18,7 @@ def inception_network():
         activation='relu',
         padding='same',
         kernel_initializer=init)(inputs)
-    
+
     Mpool1 = K.layers.MaxPool2D((3, 3), 2, padding='same')(c1)
     c2 = K.layers.Conv2D(
         64,
