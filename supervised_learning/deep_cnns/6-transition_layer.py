@@ -7,7 +7,7 @@ from tensorflow import keras as K
 
 def transition_layer(X, nb_filters, compression):
     """ builds a transition layer """
-    init = K.initializers.he_normal()
+    init = K.initializers.he_normal(seed = 0)
     n_number = int(nb_filters * compression)
 
     norm0 = K.layers.BatchNormalization()(X)
