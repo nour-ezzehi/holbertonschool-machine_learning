@@ -8,7 +8,7 @@ from tensorflow import keras as K
 def projection_block(A_prev, filters, s=2):
     """ builds a projection block """
 
-    init = K.initializers.he_normal()
+    init = K.initializers.he_normal(seed = 0)
     F11, F3, F12 = filters
 
     c_F11 = K.layers.Conv2D(F11, kernel_size=1, padding="same", strides=s,
