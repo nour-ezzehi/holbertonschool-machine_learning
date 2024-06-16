@@ -10,7 +10,7 @@ from tensorflow import keras as K
 def identity_block(A_prev, filters):
     """ builds an identity block """
 
-    init = K.initializers.he_normal()
+    init = K.initializers.he_normal(seed = 0)
     F11, F3, F12 = filters
 
     c_F11 = K.layers.Conv2D(F11, kernel_size=1, padding="same",
