@@ -71,26 +71,26 @@ class Yolo:
         return (boxes, box_confidences, box_class_probs)
 
 
-def filter_boxes(self, boxes, box_confidences, box_class_probs):
-    """ Determines filtered bounding boxes from processed outputs """
+    def filter_boxes(self, boxes, box_confidences, box_class_probs):
+        """Filters boxes based on their box scores"""
 
-    filtered_boxes = list()
-    box_classes = list()
-    box_scores = list()
+        filtered_boxes = list()
+        filtered_scores = list()
+        filtered_classes = list()
 
-    for i, b in enumerate(boxes):
-        box_conf = box_confidences[i]
-        box_class_prob = box_class_probs[i]
-        box_score = box_conf * box_class_prob
-        box_class = np.argmax(box_score, axis=-1)
-        box_class_score = np.max(box_score, axis=-1)
+        for i in range(len(boxes)):
+            box_scores = box_confidences[i] * box_class_probs[i]
 
-        index = np.where(box_class_score >= self.class_t)
-        filtered_boxes.append(b[index])
-        box_classes.append(box_class[index])
-        box_scores.append(box_class_score[index])
+            box_classes = np.argmax(box_scores, axis=-1)
+            box_class_scores = np.max(box_scores, axis=-1)
+            filtering_mask = box_class_scores >= self.class_t
 
-    filtered_boxes = np.concatenate(filtered_boxes)
-    box_classes = np.concatenate(box_classes)
-    box_scores = np.concatenate(box_scores)
-    return (filtered_boxes, box_classes, box_scores)
+            filtered_boxes += boxes[i][filtering_mask].tolist()
+            filtered_scores += box_class_scores[filtering_mask].tolist()
+            filtered_classes += box_classes[filtering_mask].tolist()
+
+        filtered_boxes = np.array(filtered_boxes)
+        filtered_scores = np.array(filtered_scores)
+        filtered_classes = np.array(filtered_classes)
+
+        return filtered_boxes, filtered_classes, filtered_scores
