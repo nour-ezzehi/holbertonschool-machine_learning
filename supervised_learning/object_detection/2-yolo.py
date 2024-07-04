@@ -70,7 +70,6 @@ class Yolo:
 
         return (boxes, box_confidences, box_class_probs)
 
-
     def filter_boxes(self, boxes, box_confidences, box_class_probs):
         """Filters boxes based on their box scores"""
 
