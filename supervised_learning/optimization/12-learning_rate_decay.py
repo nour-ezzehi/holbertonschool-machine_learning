@@ -5,7 +5,7 @@
 import tensorflow as tf
 
 
-def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
+def learning_rate_decay(alpha, decay_rate, decay_step):
     """
     creates a learning rate decay operation in tensorflow
     using inverse time decay
