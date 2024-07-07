@@ -94,7 +94,8 @@ class NST:
                 or len(input_layer.shape) != 4
                 or input_layer.shape[0] != 1):
             raise TypeError("input_layer must be a tensor of rank 4")
-        gram_matrix = tf.linalg.einsum('bijc,bijd->bcd', input_layer, input_layer)
+        gram_matrix = tf.linalg.einsum(
+            'bijc,bijd->bcd', input_layer, input_layer)
         input_shape = tf.shape(input_layer)
         nb_locations = tf.cast(input_shape[1] * input_shape[2], tf.float32)
 
