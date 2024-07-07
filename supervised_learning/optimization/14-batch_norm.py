@@ -14,10 +14,9 @@ def create_batch_norm_layer(prev, n, activation):
             mode='fan_avg'))
 
     z = dense_layer(prev)
-    gamma = tf.Variable(1., trainable=True)
-    beta = tf.Variable(0., trainable=True)
-    mean = tf.math.reduce_mean(z, axis=0)
-    variance = tf.math.reduce_variance(z, axis=0)
+    gamma = tf.Variable(initial_value=tf.ones((1, n)), name='gamma')
+    beta = tf.Variable(initial_value=tf.zeros((1, n)), name='beta')
+    mean, variance = tf.nn.moments(Z, axes=[0])
     epsilon = 1e-7
 
     batch_norm_layer = tf.nn.BatchNormalization(
