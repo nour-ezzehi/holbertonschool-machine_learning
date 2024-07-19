@@ -44,4 +44,4 @@ def determinant(matrix):
             for k in range(i, n):
                 mat[j][k] -= factor * mat[i][k]
 
-    return det
+    return int(det)
