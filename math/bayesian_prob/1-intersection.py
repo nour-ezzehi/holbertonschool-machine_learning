@@ -50,6 +50,6 @@ def intersection(x, n, P, Pr):
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError('Pr must sum to 1')
 
-    likelihood = likelihood(x, n, P)
+    likeli = likelihood(x, n, P)
 
-    return likelihood * Pr
+    return likeli * Pr
