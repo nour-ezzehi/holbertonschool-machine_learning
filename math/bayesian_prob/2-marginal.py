@@ -55,6 +55,7 @@ def intersection(x, n, P, Pr):
 
     return likeli * Pr
 
+
 def marginal(x, n, P, Pr):
     """ calculates the marginal probability of obtaining the data """
 
