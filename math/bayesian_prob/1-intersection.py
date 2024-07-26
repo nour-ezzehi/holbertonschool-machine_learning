@@ -28,6 +28,7 @@ def likelihood(x, n, P):
 
     return likelihood
 
+
 def intersection(x, n, P, Pr):
     """ calculates the intersection of obtaining this data
     with the various hypothetical probabilities """
