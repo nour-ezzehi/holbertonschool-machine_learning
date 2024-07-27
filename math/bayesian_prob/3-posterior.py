@@ -79,6 +79,7 @@ def marginal(x, n, P, Pr):
 
     return np.sum(intersection(x, n, P, Pr))
 
+
 def posterior(x, n, P, Pr):
     """ calculates the posterior probability for the various hypothetical
     probabilities of developing severe side effects given the data """
