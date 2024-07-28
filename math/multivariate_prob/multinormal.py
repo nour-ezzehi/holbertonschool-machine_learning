@@ -8,7 +8,7 @@ def mean_cov(X):
 
     if not isinstance(X, np.ndarray) or X.ndim != 2:
         raise TypeError('X must be a 2D numpy.ndarray')
-    n = X.shape[0]
+    n = X.shape[1]
     if n < 2:
         raise ValueError('X must contain multiple data points')
 
