@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 1. Poisson PMF """
+""" 2. Poisson CDF """
 
 
 class Poisson():
@@ -36,3 +36,17 @@ class Poisson():
                 return n * factorial(n - 1)
 
         return ((self.lambtha ** k) * (1 / (e ** self.lambtha))) / factorial(k)
+
+    def cdf(self, k):
+        """Calculates the value of the CDF for a given number of “successes”"""
+
+        if type(k) is not int:
+            k = int(k)
+
+        if k < 0:
+            return 0
+        else:
+            res = 0
+            for i in range(k + 1):
+                res += self.pmf(i)
+            return res
