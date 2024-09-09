@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 4. Exponential PDF """
+""" 5. Exponential CDF """
 
 
 class Exponential:
@@ -27,3 +27,12 @@ class Exponential:
             return (0)
 
         return self.lambtha * e ** ((-1 * self.lambtha) * x)
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given time period"""
+        e = 2.7182818285
+
+        if x < 0:
+            return 0
+
+        return 1 - e ** (-self.lambtha * x)
