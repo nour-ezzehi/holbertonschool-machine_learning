@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""10. Initialize Binomial"""
+"""11. Binomial PMF"""
 
 
 class Binomial():
@@ -26,3 +26,21 @@ class Binomial():
 
             self.n = round(mean / (1 - (variance / mean)))
             self.p = float(mean / self.n)
+
+    def pmf(self, k):
+        """Calculates the value of the PMF for a given number of “successes”
+        """
+
+        if not isinstance(k, int):
+            k = int(k)
+        if k is None or k < 0 or k > self.n:
+            return 0
+
+        return (self.fact(self.n) / (self.fact(k) * self.fact(self.n - k))) * (
+            (self.p ** k) * (1 - self.p) ** (self.n - k))
+
+    def fact(self, k):
+        """function that returns the factorial of k"""
+        if k in [0, 1]:
+            return 1
+        return k * self.fact(k - 1)
