@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""11. Binomial PMF"""
+"""12. Binomial CDF"""
 
 
 class Binomial():
@@ -44,3 +44,17 @@ class Binomial():
         if k in [0, 1]:
             return 1
         return k * self.fact(k - 1)
+
+    def cdf(self, k):
+        """Calculates the value of the CDF for a given number of “successes”
+        """
+
+        if not isinstance(k, int):
+            k = int(k)
+        if k is None or k < 0 or k > self.n:
+            return 0
+
+        return sum([(self.fact(self.n) /
+                    (self.fact(i) * self.fact(self.n - i)))
+                    * ((self.p ** i) * (1 - self.p) ** (self.n - i))
+                    for i in range(0, k + 1)])
