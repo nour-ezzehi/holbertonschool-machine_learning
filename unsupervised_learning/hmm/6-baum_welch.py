@@ -50,11 +50,10 @@ def forward(Observation, Emission, Transition, Initial):
 
     for i in range(1, observations):
         for j in range(hidden_states):
-            F[j, i] = np.sum(F[:, i-1] * Transition[
+            F[j, i] = np.sum(F[:, i - 1] * Transition[
                 :, j] * Emission[j, Observation[i]])
 
-
-    P = np.sum(F[:, observations-1], axis=0)
+    P = np.sum(F[:, observations - 1], axis=0)
 
     return P, F
 
@@ -161,7 +160,6 @@ def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
 
         NUM = np.zeros((hidden_states, hidden_states, observations - 1))
 
-
         for t in range(observations - 1):
             for i in range(hidden_states):
                 for j in range(hidden_states):
@@ -174,10 +172,8 @@ def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
         DEN = np.sum(NUM, axis=(0, 1))
         X = NUM / DEN
 
-
         G = np.zeros((hidden_states, observations))
         NUM = np.zeros((hidden_states, observations))
-
 
         for t in range(observations):
             for i in range(hidden_states):
