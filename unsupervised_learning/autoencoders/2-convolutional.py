@@ -61,11 +61,9 @@ def autoencoder(input_dims, filters, latent_dims):
 
             outputs = layer(outputs)
 
-
         layer = keras.layers.UpSampling2D(size=(2, 2))
 
         outputs = layer(outputs)
-
 
     layer = keras.layers.Conv2D(
         filters=input_dims[-1],
