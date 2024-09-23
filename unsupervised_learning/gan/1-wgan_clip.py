@@ -7,31 +7,27 @@ import matplotlib.pyplot as plt
 
 
 class WGAN_clip(keras.Model):
-
-    def __init__(
-            self,
-            generator,
-            discriminator,
-            latent_generator,
-            real_examples,
-            batch_size=200,
-            disc_iter=2,
-            learning_rate=.005):
-        # run the __init__ of keras.Model first.
-        super().__init__()
+    """Wgan"""
+    def __init__(self, generator, discriminator, latent_generator,
+                 real_examples, batch_size=200, disc_iter=2,
+                 learning_rate=.005):
+        """
+        Initializes the Wasserstein GANs
+        """
+        super().__init__()  # run the __init__ of keras.Model first.
         self.latent_generator = latent_generator
         self.real_examples = real_examples
         self.generator = generator
         self.discriminator = discriminator
         self.batch_size = batch_size
         self.disc_iter = disc_iter
+        self.clip_const = 1.0
 
         self.learning_rate = learning_rate
-        # standard value, but can be changed if necessary
-        self.beta_1 = .5
-        # standard value, but can be changed if necessary
-        self.beta_2 = .9
-        # Define the generator loss and optimizer:
+        self.beta_1 = .5  # standard value, but can be changed if necessary
+        self.beta_2 = .9  # standard value, but can be changed if necessary
+
+        # define the generator loss and optimizer:
         self.generator.loss = lambda x: - tf.math.reduce_mean(x)
         self.generator.optimizer = keras.optimizers.Adam(
             learning_rate=self.learning_rate,
@@ -51,7 +47,7 @@ class WGAN_clip(keras.Model):
         self.discriminator.compile(
             optimizer=self.discriminator.optimizer,
             loss=self.discriminator.loss)
-    # generator of real samples of size batch_size
+
     def get_fake_sample(self, size=None, training=False):
         if not size:
             size = self.batch_size
