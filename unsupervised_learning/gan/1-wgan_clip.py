@@ -31,29 +31,26 @@ class WGAN_clip(keras.Model):
         self.beta_1 = .5
         # standard value, but can be changed if necessary
         self.beta_2 = .9
-
-        # define the generator loss and optimizer:
-        self.generator.loss = self.generator_loss
+        # Define the generator loss and optimizer:
+        self.generator.loss = lambda x: - tf.math.reduce_mean(x)
         self.generator.optimizer = keras.optimizers.Adam(
-            learning_rate=self.learning_rate, beta_1=self.beta_1, beta_2=self.beta_2)
+            learning_rate=self.learning_rate,
+            beta_1=self.beta_1,
+            beta_2=self.beta_2)
         self.generator.compile(
-            optimizer=self.generator.optimizer,
-            loss=self.generator.loss)
+            optimizer=generator.optimizer,
+            loss=generator.loss)
 
-        # define the discriminator loss and optimizer:
-        self.discriminator.loss = self.discriminator_loss
+        # Define the discriminator loss and optimizer:
+        self.discriminator.loss = lambda x, y: (
+            -tf.math.reduce_mean(x) + tf.math.reduce_mean(y))
         self.discriminator.optimizer = keras.optimizers.Adam(
-            learning_rate=self.learning_rate, beta_1=self.beta_1, beta_2=self.beta_2)
+            learning_rate=self.learning_rate,
+            beta_1=self.beta_1,
+            beta_2=self.beta_2)
         self.discriminator.compile(
             optimizer=self.discriminator.optimizer,
             loss=self.discriminator.loss)
-
-    def generator_loss(self, fake_output):
-        return -tf.reduce_mean(fake_output)
-
-    def discriminator_loss(self, real_output, fake_output):
-        return tf.reduce_mean(fake_output) - tf.reduce_mean(real_output)
-
     # generator of real samples of size batch_size
     def get_fake_sample(self, size=None, training=False):
         if not size:
